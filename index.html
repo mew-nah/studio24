@@ -207,6 +207,9 @@
     flex-direction: column;
     gap: 18px;
   }
+  .section-head.section-head-wide {
+    max-width: none;
+  }
   .section-num {
     font-family: var(--serif);
     font-size: 16px;
@@ -221,6 +224,10 @@
     font-size: clamp(36px, 5vw, 60px);
     line-height: 1.05;
     letter-spacing: -0.02em;
+  }
+  h2.h2-oneline {
+    white-space: nowrap;
+    font-size: clamp(32px, 4.6vw, 56px);
   }
   h2 em { font-style: normal; font-weight: 300; }
   .section-sub {
@@ -395,77 +402,22 @@
     margin-bottom: 4px;
   }
 
-  /* ---------- RETAINER ADD-ON ---------- */
-  .addon {
-    margin-top: 32px;
+  /* ---------- RETAINER DISCLAIMER ---------- */
+  .retainer-note {
+    margin-top: 28px;
+    padding: 18px 24px;
     background: var(--bg-warm);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 36px 40px 40px;
-    position: relative;
-  }
-  .addon-tag {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: var(--accent);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 13px;
-    padding: 5px 14px;
-    border-radius: 100px;
-  }
-  .addon-body h3 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(26px, 3vw, 34px);
-    line-height: 1.1;
-    letter-spacing: -0.015em;
-    margin-bottom: 14px;
-  }
-  .addon-body h3 em {
-    font-style: italic;
-    font-weight: 300;
-  }
-  .addon-lead {
-    font-size: 16px;
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    font-size: 15px;
     color: var(--ink-soft);
     line-height: 1.5;
-    max-width: 760px;
-    margin-bottom: 28px;
+    text-align: center;
   }
-  .addon-options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 22px;
-  }
-  .addon-option {
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 20px 22px;
-  }
-  .addon-level {
+  .retainer-note strong {
     font-family: var(--serif);
     font-weight: 500;
-    font-size: 18px;
     color: var(--ink);
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px dashed var(--line);
-  }
-  .addon-option p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
-  .addon-note {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--ink-mute);
-    padding-top: 18px;
-    border-top: 1px dashed var(--line);
   }
 
   /* ---------- PROCESS ---------- */
@@ -641,6 +593,7 @@
     .tiers.tiers-four { grid-template-columns: repeat(2, 1fr); }
     .stack-grid { grid-template-columns: repeat(2, 1fr); }
     .beyond-grid { grid-template-columns: repeat(2, 1fr); }
+    h2.h2-oneline { white-space: normal; }
   }
 
   /* ---------- ABOUT ---------- */
@@ -656,55 +609,18 @@
   }
   .portrait-frame {
     width: 220px;
-    aspect-ratio: 4 / 5;
+    height: 220px;
     background: var(--bg-warm);
     border: 1px solid var(--line);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background-image:
-      repeating-linear-gradient(
-        45deg,
-        transparent 0 12px,
-        rgba(0,0,0,0.025) 12px 13px
-      );
-  }
-  .portrait-frame::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -75%);
-    width: 60px; height: 60px;
     border-radius: 50%;
-    background: var(--line);
-    opacity: 0.7;
+    overflow: hidden;
+    position: relative;
   }
-  .portrait-frame::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, 30%);
-    width: 110px; height: 70px;
-    border-top-left-radius: 60px;
-    border-top-right-radius: 60px;
-    background: var(--line);
-    opacity: 0.7;
-  }
-  .portrait-caption {
-    position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-mute);
-    background: var(--bg);
-    padding: 3px 10px;
-    border-radius: 100px;
-    z-index: 2;
+  .portrait-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .about-lead {
     font-size: 18px;
@@ -764,8 +680,7 @@
   }
   .universal-list {
     list-style: none;
-    border-left: 1px solid rgba(26,26,26,0.15);
-    padding-left: 32px;
+    padding-left: 0;
     position: relative;
     display: grid;
     grid-template-columns: 1fr;
@@ -891,8 +806,6 @@
     color: var(--ink-mute);
     margin-top: 4px;
     letter-spacing: -0.005em;
-  }
-    letter-spacing: 0.01em;
   }
   .ops-btn {
     background: var(--ink);
@@ -1194,7 +1107,7 @@
     .nav-links { display: none; }
     .nav-links .btn { display: inline-flex; }
     .hero-meta { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .pillars, .tiers, .tiers.tiers-four, .addon-options, .process-steps, .process-six, .stack-grid, .wf-tabs, .ops-features, .beyond-grid { grid-template-columns: 1fr; }
+    .pillars, .tiers, .tiers.tiers-four, .process-steps, .process-six, .stack-grid, .wf-tabs, .ops-features, .beyond-grid { grid-template-columns: 1fr; }
     .process-six .step:nth-child(3n) { border-right: none; }
     .process-six .step:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
     .process-six .step:nth-child(-n+5) { border-bottom: 1px solid var(--line); }
@@ -1208,6 +1121,7 @@
     .foot-grid { grid-template-columns: 1fr 1fr; }
     .wrap { padding: 0 20px; }
     .section { padding: 64px 0; }
+    h2.h2-oneline { white-space: normal; }
   }
 </style>
 </head>
@@ -1241,7 +1155,6 @@
     </p>
     <div class="hero-cta">
       <a href="https://calendar.app.google/w853G5TSB7dnGBbA9" class="btn" target="_blank" rel="noopener">Book intro call →</a>
-      <a href="#offers" class="btn btn-ghost">See the offers</a>
     </div>
 
     <div class="hero-meta">
@@ -1317,15 +1230,15 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="about-left">
-  <div class="section-num" style="margin-bottom: 24px;">About</div>
-  <h2>Not just building automations. <em>Running businesses on them.</em></h2>
-  <div class="about-portrait">
-    <div class="portrait-frame" style="background-image: none;">
-      <img src="Profile Pic Png.png" alt="Gabi Yoon" style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px;">
-    </div>
-  </div>
-  <p class="about-lead">Two businesses built lean...</p>
-</div>
+        <div class="section-num" style="margin-bottom: 24px;">About</div>
+        <h2>Not just building automations. <em>Running businesses on them.</em></h2>
+        <div class="about-portrait">
+          <div class="portrait-frame">
+            <img src="Profile Pic Png.png" alt="Gabi Yoon">
+          </div>
+        </div>
+        <p class="about-lead">Two businesses built lean, run by one operator with the help of 15+ agents. Studio24 is the same playbook, packaged for your team.</p>
+      </div>
       <div class="about-right">
         <div class="about-card">
           <div class="about-card-label">Operator, not theorist</div>
@@ -1341,7 +1254,7 @@
         </div>
         <div class="about-card">
           <div class="about-card-label">Multilingual, multi-context</div>
-          <p>English, German, Korean. Worked across Europe and Asia. Comfortable in regulated environments and fast-moving founder-led teams alike.</p>
+          <p>Worked across Europe and Asia. Comfortable in regulated environments and fast-moving founder-led teams alike.</p>
         </div>
       </div>
     </div>
@@ -1514,10 +1427,10 @@
 
 <section class="section" id="offers">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head section-head-wide">
       <div class="section-num">Offers</div>
       <div>
-        <h2>Pick the <em>smallest thing</em> that proves it.</h2>
+        <h2 class="h2-oneline">Pick the smallest thing <em>that proves it.</em></h2>
         <p class="section-sub" style="margin-top: 20px;">Start with a workshop or pilot. Expand when it works. Pricing is scoped to your setup and shared in a short proposal after the intro call.</p>
       </div>
     </div>
@@ -1527,7 +1440,6 @@
         <div class="tier-tag">Workshop</div>
         <div class="tier-name">Tier 00</div>
         <h3>Team Build Day</h3>
-        <div class="tier-price">Custom scoped</div>
         <div class="tier-meta">1-2 days · 1 team · hands-on</div>
         <ul>
           <li>One team builds real AI agents with expert guidance</li>
@@ -1542,7 +1454,6 @@
         <div class="tier-tag">Entry</div>
         <div class="tier-name">Tier 01</div>
         <h3>Pilot Sprint</h3>
-        <div class="tier-price">Custom scoped</div>
         <div class="tier-meta">2-3 weeks · 1 workflow</div>
         <ul>
           <li>One automation, scoped end-to-end</li>
@@ -1558,7 +1469,6 @@
         <div class="tier-tag">Most popular</div>
         <div class="tier-name">Tier 02</div>
         <h3>Function Stack</h3>
-        <div class="tier-price">Custom scoped</div>
         <div class="tier-meta">6-8 weeks · 1 full function</div>
         <ul>
           <li>Full function automated (Marketing, Sales, or Admin)</li>
@@ -1575,7 +1485,6 @@
         <div class="tier-tag">Premium</div>
         <div class="tier-name">Tier 03</div>
         <h3>Operator Platform</h3>
-        <div class="tier-price">Custom scoped</div>
         <div class="tier-meta">10-14 weeks · full growth stack</div>
         <ul>
           <li>Marketing + Sales + Admin integrated</li>
@@ -1589,28 +1498,7 @@
       </div>
     </div>
 
-    <div class="addon">
-      <div class="addon-tag">Add-on</div>
-      <div class="addon-body">
-        <h3>Retainers, <em>only if you want one.</em></h3>
-        <p class="addon-lead">Default is your team owns everything after handover. For teams that prefer ongoing presence, three flexible flavors are available as add-ons to any tier.</p>
-        <div class="addon-options">
-          <div class="addon-option">
-            <div class="addon-level">Maintain</div>
-            <p>Monthly health check, minor updates, on-call for breakages. Keeps the lights on while your team stays in the driver's seat.</p>
-          </div>
-          <div class="addon-option">
-            <div class="addon-level">Evolve</div>
-            <p>One new workflow or major iteration per month, plus maintenance. For teams who want to keep compounding without hiring in-house.</p>
-          </div>
-          <div class="addon-option">
-            <div class="addon-level">Embed</div>
-            <p>Fractional AI ops lead. Multiple workflows, strategy, vendor calls, internal training. Effectively part of your team.</p>
-          </div>
-        </div>
-        <p class="addon-note">Retainer pricing is scoped to your setup. Discussed during the intro call.</p>
-      </div>
-    </div>
+    <p class="retainer-note"><strong>Retainers are optional.</strong> Default is your team owns everything after handover. Ongoing support (maintain, evolve, or embed) can be added to any tier and discussed during the intro call.</p>
   </div>
 </section>
 
@@ -1877,7 +1765,6 @@
       </div>
       <div>
         <h5>Contact</h5>
-        <a href="#">hello@operatorstudio.ch</a>
         <a href="#">LinkedIn</a>
         <a href="#">Book intro call</a>
       </div>
